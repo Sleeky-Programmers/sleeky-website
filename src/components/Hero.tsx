@@ -42,7 +42,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <div className="flex flex-col md:flex-row flex-wrap items-center md:justify-between justify-center w-full px-4 md:px-[40px] py-2 relative overflow-hidden">
+        <div id="home" className="flex flex-col md:flex-row flex-wrap items-center md:justify-between justify-center w-full px-4 md:px-[40px] py-2 relative overflow-hidden">
             <div className="text-center md:text-left mb-8 md:mb-0">
                 <h1 className="hero-title hidden-before-animation text-3xl md:text-4xl lg:text-5xl text-blue-dark font-black leading-snug">
                     Experience <br /> Excellence with Sleeky <br /> Programmer Ltd
@@ -58,7 +58,7 @@ const Hero = () => {
                         text="Get Started" 
                         onClick={() => { }} 
                     />
-                    <div className="flex flex-row items-center justify-center md:justify-start gap-2">
+                    <div className="flex flex-row items-center justify-center md:justify-start gap-2 cursor-pointer">
                         <Image 
                             src="/assets/play-icon.png" 
                             alt="Learn more" 

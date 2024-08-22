@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import CallToAction from "@/components/CallToAction";
+import Contact from "@/components/Contact";
 import CoreValues from "@/components/CoreValues";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -16,6 +17,7 @@ const Home = () => {
       <CoreValues />
       <Services />
       <CallToAction />
+      <Contact />
     </>
   );
 }

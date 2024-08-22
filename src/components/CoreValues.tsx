@@ -34,7 +34,7 @@ const CoreValues = () => {
                 <div className="bg-green w-[100px] h-[4px] rounded-full" />
             </div>
 
-            <div className="bg-white p-3 rounded-lg shadow-lg mt-4">
+            <div className="bg-white p-5 rounded-lg shadow-lg mt-4">
                 <div className="flex flex-col md:flex-row items-center justify-around gap-6">
                     <div className='core-value-item flex items-center justify-start gap-3 flex-1'>
                         <div className="bg-purple-veryLight flex items-center justify-center p-4 px-5 rounded-lg">

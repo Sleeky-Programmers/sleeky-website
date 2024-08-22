@@ -3,6 +3,7 @@ import CoreValues from "@/components/CoreValues";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Overview from "@/components/Overview";
+import Services from "@/components/Services";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <About />
       <Overview />
       <CoreValues />
+      <Services />
     </>
   );
 }

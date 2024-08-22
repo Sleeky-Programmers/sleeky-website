@@ -29,7 +29,7 @@ const ContactForm = () => {
     }, []);
 
     return (
-        <div className="py-12">
+        <div className="px-4 md:px-[40px] py-12">
             <div className="max-w-lg mx-auto text-center">
                 <h2 className="text-3xl font-semibold contact-heading">Say hello</h2>
                 <p className="mt-4 text-gray-600 contact-heading">

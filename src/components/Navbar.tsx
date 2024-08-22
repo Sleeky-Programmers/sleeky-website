@@ -7,10 +7,10 @@ import gsap from "gsap";
 
 const Navbar = () => {
     const navLinks = [
-        { id: 1, linkText: "Home", href: "home" },
-        { id: 2, linkText: "About Us", href: "about-us" },
-        { id: 3, linkText: "Services", href: "services" },
-        { id: 4, linkText: "Blog", href: "blog" },
+        { id: 1, linkText: "Home", href: "home", isActive: true },
+        { id: 2, linkText: "About Us", href: "about-us", isActive: false },
+        { id: 3, linkText: "Services", href: "services", isActive: false },
+        { id: 4, linkText: "Blog", href: "blog", isActive: false },
     ];
 
     const handleScrollTo = (id: string) => {
@@ -37,7 +37,7 @@ const Navbar = () => {
                 {navLinks.map(link => (
                     <li
                         key={link.id}
-                        className="hover:font-bold hover:border-b-2 border-b-green transition-all cursor-pointer"
+                        className={`hover:font-bold hover:border-b-2 border-b-green transition-all cursor-pointer ${link.isActive && 'border-b-2 font-bold'}`}
                         onClick={() => handleScrollTo(link.href)}
                     >
                         {link.linkText}

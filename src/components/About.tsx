@@ -10,11 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
     useEffect(() => {
         gsap.fromTo(
-            ".about-item", 
-            { opacity: 0, y: 50 }, 
+            ".about-item",
+            { opacity: 0, y: 50 },
             {
-                opacity: 1, 
-                y: 0, 
+                opacity: 1,
+                y: 0,
                 duration: 1,
                 stagger: 0.2,
                 scrollTrigger: {
@@ -29,56 +29,64 @@ const About = () => {
 
     return (
         <div id="about-us" className="px-4 md:px-[40px] py-2">
+            {/* Section Title */}
             <div className="flex flex-col items-center justify-center about-item">
                 <div className="bg-green w-[100px] h-[4px] rounded-full" />
-                <h1 className="font-bold text-3xl md:text-4xl mt-3 text-blue-dark">About Us</h1>
+                <h1 className="font-bold text-3xl md:text-4xl mt-3 text-blue-dark">
+                    About Us
+                </h1>
             </div>
 
-            <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-                <div className="flex flex-col md:flex-row items-center md:items-baseline justify-start gap-3 about-item">
+            {/* First Row */}
+            <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-3 about-item">
                     <Image
                         src="/assets/about-1.jpeg"
                         alt="About 1"
                         width={300}
-                        height={300}
-                        className="rounded-lg object-cover w-full md:w-auto"
+                        height={200}
+                        className="rounded-lg object-cover w-full md:w-[300px] h-[200px] md:h-[300px]"
                     />
                     <Image
                         src="/assets/about-2.jpeg"
                         alt="About 2"
                         width={300}
-                        height={500}
-                        className="rounded-lg object-cover h-[300px] md:h-auto w-full md:w-auto"
+                        height={200}
+                        className="rounded-lg object-cover w-full md:w-[300px] h-[200px] md:h-[300px] lg:block hidden"
                     />
                 </div>
 
                 <div className="flex flex-col items-center md:items-end justify-center flex-1 text-center md:text-right about-item">
-                    <h1 className="font-black text-blue-dark text-3xl md:text-4xl">Sleeky Programmers Ltd.</h1>
+                    <h1 className="font-black text-blue-dark text-3xl md:text-4xl">
+                        Sleeky Programmers Ltd.
+                    </h1>
                     <p className="text-blue-dark mt-2">
-                        Sleeky Programmers Ltd delivers innovative software focused on exceptional user experience, 
-                        leveraging human behavior insights to exceed expectations.
+                        Sleeky Programmers Ltd delivers innovative software focused on
+                        exceptional user experience, leveraging human behavior insights to
+                        exceed expectations.
                     </p>
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-between gap-3 mt-5 about-item">
+            {/* Second Row */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 mt-5 about-item">
                 <Image
                     src="/assets/about-3.jpeg"
                     alt="About 3"
                     width={300}
-                    height={500}
-                    className="w-full h-[280px] rounded-lg object-cover"
+                    height={200}
+                    className="w-full md:w-[300px] h-[200px] md:h-[200px] rounded-lg object-cover flex-1"
                 />
                 <Image
                     src="/assets/about-4.jpeg"
                     alt="About 4"
                     width={300}
-                    height={500}
-                    className="w-full h-[280px] rounded-lg object-cover"
+                    height={200}
+                    className="w-full md:w-[300px] h-[200px] md:h-[200px] rounded-lg object-cover flex-1"
                 />
             </div>
         </div>
     );
-}
+};
 
 export default About;

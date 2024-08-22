@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import CallToAction from "@/components/CallToAction";
 import CoreValues from "@/components/CoreValues";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -14,6 +15,7 @@ const Home = () => {
       <Overview />
       <CoreValues />
       <Services />
+      <CallToAction />
     </>
   );
 }

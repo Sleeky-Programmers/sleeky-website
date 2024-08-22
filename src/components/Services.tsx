@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -18,47 +18,44 @@ type ServiceItemProps = {
 }
 
 const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alternate }: ServiceItemProps) => {
+    const serviceItemRef = useRef(null);
+
     useEffect(() => {
-        gsap.fromTo(
-            ".service-item-top",
-            { opacity: 0, y: -50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: ".service-item-top",
-            }
-        );
+        const ctx = gsap.context(() => {
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: serviceItemRef.current,
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                }
+            });
 
-        gsap.fromTo(
-            ".service-item-bottom",
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: ".service-item-bottom",
-            }
-        );
+            timeline
+                .fromTo(
+                    ".service-item-top",
+                    { opacity: 0, y: -50 },
+                    { opacity: 1, y: 0, duration: 1, stagger: 0.2 }
+                )
+                .fromTo(
+                    ".service-item-bottom",
+                    { opacity: 0, y: 50 },
+                    { opacity: 1, y: 0, duration: 1, stagger: 0.2 },
+                    "-=0.8"
+                )
+                .fromTo(
+                    ".service-item-image",
+                    { opacity: 0, x: alternate ? 150 : -150 },
+                    { opacity: 1, x: 0, duration: 1, stagger: 0.2 },
+                    "-=0.8"
+                );
+        }, serviceItemRef);
 
-        gsap.fromTo(
-            ".service-item-image",
-            { opacity: 0, x: -150 },
-            {
-                opacity: 1,
-                x: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: ".service-item-image",
-            }
-        );
-    }, []);
+        return () => ctx.revert();
+    }, [alternate]);
 
     if (alternate) {
         return (
-            <div className="flex items-center justify-between gap-3 flex-wrap-reverse">
+            <div ref={serviceItemRef} className="flex items-center justify-between gap-3 flex-wrap-reverse">
                 <Image
                     src={img}
                     alt={`${topTitle} ${bottomTitle}`}
@@ -91,7 +88,7 @@ const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alter
     }
 
     return (
-        <div id="services" className="flex items-center justify-between gap-3 flex-wrap mt-[20px]">
+        <div ref={serviceItemRef} id="services" className="flex items-center justify-between gap-3 flex-wrap mt-[20px]">
             <div className="flex-1">
                 <div className="flex items-center justify-start gap-2 mb-3 service-item-top">
                     <div className="flex items-center justify-center bg-blue-dark rounded-full p-3">
@@ -124,56 +121,6 @@ const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alter
 }
 
 const Services = () => {
-    useEffect(() => {
-        gsap.fromTo(
-            ".service-icon",
-            { opacity: 0, y: -50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: ".service-icon",
-            }
-        );
-
-        gsap.fromTo(
-            ".service-title",
-            { opacity: 0, y: -50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: ".service-title",
-            }
-        );
-
-        gsap.fromTo(
-            ".service-border",
-            { opacity: 0, x: 100 },
-            {
-                opacity: 1,
-                x: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: ".service-border",
-            }
-        );
-
-        gsap.fromTo(
-            ".service-text",
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: ".service-text",
-            }
-        );
-    }, []);
-
     return (
         <div className="px-4 md:px-[40px] py-6">
             <div className="flex flex-col items-center text-center">

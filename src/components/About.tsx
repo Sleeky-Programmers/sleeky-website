@@ -29,7 +29,6 @@ const About = () => {
 
     return (
         <div id="about-us" className="px-4 md:px-[40px] py-2">
-            {/* Section Title */}
             <div className="flex flex-col items-center justify-center about-item">
                 <div className="bg-green w-[100px] h-[4px] rounded-full" />
                 <h1 className="font-bold text-3xl md:text-4xl mt-3 text-blue-dark">
@@ -37,7 +36,6 @@ const About = () => {
                 </h1>
             </div>
 
-            {/* First Row */}
             <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-3 about-item">
                     <Image
@@ -62,13 +60,12 @@ const About = () => {
                     </h1>
                     <p className="text-blue-dark mt-2">
                         Sleeky Programmers Ltd delivers innovative software focused on
-                        exceptional user experience, leveraging human behavior insights to
+                        exceptional user experience, leveraging human behavior and insights to
                         exceed expectations.
                     </p>
                 </div>
             </div>
 
-            {/* Second Row */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 mt-5 about-item">
                 <Image
                     src="/assets/about-3.jpeg"

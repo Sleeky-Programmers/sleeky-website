@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -28,9 +29,6 @@ const Footer = () => {
                         <li className="mb-2">
                             <a href="#" className="text-gray-700 hover:text-blue-600">Services</a>
                         </li>
-                        <li className="mb-2">
-                            <a href="#" className="text-gray-700 hover:text-blue-600">Blog</a>
-                        </li>
                     </ul>
                 </div>
 
@@ -42,41 +40,41 @@ const Footer = () => {
                         Kaura District, Abuja.
                     </p>
                     <p className="mt-2 text-gray-700">
-                        Email: <a href="mailto:support@sleekyprogrammers.com" className="text-blue-600">support@sleekyprogrammers.com</a>
+                        Email: <a href="mailto:sleekyprogrammers@gmail.com" className="text-blue-600">sleekyprogrammers@gmail.com</a>
                     </p>
                     <div className="flex mt-4 space-x-4">
-                        <a href="#">
+                        <Link href="https://www.facebook.com/profile.php?id=61565977402117&mibextid=ZbWKwL">
                             <Image
                                 src="/assets/facebook.png"
                                 alt="Facebook"
                                 width={20}
                                 height={20}
                             />
-                        </a>
-                        <a href="#">
+                        </Link>
+                        <Link href="https://www.instagram.com/sleekyprogrammers?igsh=c2x4cTU1eGY5aGdj">
                             <Image
                                 src="/assets/instagram.png"
                                 alt="Instagram"
                                 width={20}
                                 height={20}
                             />
-                        </a>
-                        <a href="#">
+                        </Link>
+                        <Link href="https://x.com/sleekydevs?s=09">
                             <Image
                                 src="/assets/twitter.png"
                                 alt="Twitter"
                                 width={20}
                                 height={20}
                             />
-                        </a>
-                        <a href="#">
+                        </Link>
+                        <Link href="https://www.linkedin.com/company/sleeky-programmers-limited/">
                             <Image
                                 src="/assets/linkedin.png"
                                 alt="LinkedIn"
                                 width={20}
                                 height={20}
                             />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

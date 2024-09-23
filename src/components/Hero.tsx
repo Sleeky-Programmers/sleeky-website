@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import gsap from "gsap";
 import Button from "./Button";
+import { config } from '@/config';
 
 type BackgroundDataCardProps = {
     src: string;
@@ -52,13 +53,16 @@ const Hero = () => {
                     enhance your operations and drive success. <br />
                     Let&apos;s partner to create lasting impact.
                 </p>
-                
+
                 <div className="hero-button hidden-before-animation flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
                     <Button
                         text="Get Started" 
-                        onClick={() => { }} 
+                        onClick={() => config.handleScrollTo("contact-us")} 
                     />
-                    <div className="flex flex-row items-center justify-center md:justify-start gap-2 cursor-pointer">
+                    <div
+                        className="flex flex-row items-center justify-center md:justify-start gap-2 cursor-pointer"
+                        onClick={() => config.handleScrollTo("about-us")} 
+                    >
                         <Image 
                             src="/assets/play-icon.png" 
                             alt="Learn more" 
@@ -102,7 +106,7 @@ const Hero = () => {
                     src="/assets/hand-heart.png"
                     text="100,000"
                     subText="Happy Clients"
-                    className="hero-card absolute bottom-[60px] md:bottom-[90px] right-[160px] md:right-[320px] z-0"
+                    className="hero-card absolute bottom-[60px] md:bottom-[90px] right-[180px] md:right-[350px] z-0"
                 />
             </div>
 

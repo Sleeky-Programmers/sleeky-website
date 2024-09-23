@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,6 +28,13 @@ const CallToAction = () => {
             { opacity: 1, y: 0, duration: 1, stagger: 0.2, scrollTrigger: ".cta-contact" }
         );
     }, []);
+
+    const socialMediaLinks = [
+        { name: 'facebook', link: 'https://www.facebook.com/profile.php?id=61565977402117&mibextid=ZbWKwL' },
+        { name: 'instagram', link: 'https://www.instagram.com/sleekyprogrammers?igsh=c2x4cTU1eGY5aGdj' },
+        { name: 'twitter', link: 'https://x.com/sleekydevs?s=09' },
+        { name: 'linkedin', link: 'https://www.linkedin.com/company/sleeky-programmers-limited/' },
+    ]
 
     return (
         <div className="bg-gray-50 px-4 md:px-[40px] py-6 ">
@@ -56,21 +64,23 @@ const CallToAction = () => {
                 <div className="flex-1 text-center md:text-left cta-contact">
                     <p className="text-xl font-bold">Follow us</p>
                     <div className="flex items-center justify-center md:justify-start gap-3 mt-2">
-                        {['facebook', 'instagram', 'twitter', 'linkedin'].map((platform) => (
-                            <div key={platform} className="flex items-center justify-center p-3 rounded-full shadow-md">
-                                <Image 
-                                    src={`/assets/${platform}.png`} 
-                                    alt={platform.charAt(0).toUpperCase() + platform.slice(1)} 
-                                    width={13} 
-                                    height={13} 
-                                />
-                            </div>
+                        {socialMediaLinks.map((platform) => (
+                            <Link key={platform.name} href={platform.link}>
+                                <div className="flex items-center justify-center p-3 rounded-full shadow-md">
+                                    <Image
+                                        src={`/assets/${platform.name}.png`}
+                                        alt={platform.name.charAt(0).toUpperCase() + platform.name.slice(1)}
+                                        width={13}
+                                        height={13}
+                                    />
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
                 <div className="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 border-t-2 md:border-t-0 md:border-l-2 md:border-r-2 border-gray-200 pt-4 md:pt-0 cta-contact">
                     <Image 
-                        src="/assets/envelope.png" 
+                        src="/assets/envelope.png"
                         alt="Phone"
                         width={23} 
                         height={23} 

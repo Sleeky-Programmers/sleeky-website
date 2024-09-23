@@ -1,6 +1,6 @@
 type ButtonProps = {
     text: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const Button = ({ text, onClick }: ButtonProps) => {

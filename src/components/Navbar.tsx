@@ -4,21 +4,14 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Button from "./Button";
 import gsap from "gsap";
+import { config } from "@/config";
 
 const Navbar = () => {
     const navLinks = [
         { id: 1, linkText: "Home", href: "home", isActive: true },
         { id: 2, linkText: "About Us", href: "about-us", isActive: false },
         { id: 3, linkText: "Services", href: "services", isActive: false },
-        { id: 4, linkText: "Blog", href: "blog", isActive: false },
     ];
-
-    const handleScrollTo = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
 
     useEffect(() => {
         gsap.fromTo(".nav", { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1 });
@@ -38,7 +31,7 @@ const Navbar = () => {
                     <li
                         key={link.id}
                         className={`hover:font-bold hover:border-b-2 border-b-green transition-all cursor-pointer ${link.isActive && 'border-b-2 font-bold'}`}
-                        onClick={() => handleScrollTo(link.href)}
+                        onClick={() => config.handleScrollTo(link.href)}
                     >
                         {link.linkText}
                     </li>
@@ -47,7 +40,7 @@ const Navbar = () => {
 
             <Button 
                 text="Contact Us"
-                onClick={() => { }}
+                onClick={() => config.handleScrollTo("contact-us")}
             />
         </nav>
     );

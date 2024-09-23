@@ -40,7 +40,7 @@ const Footer = () => {
                         Kaura District, Abuja.
                     </p>
                     <p className="mt-2 text-gray-700">
-                        Email: <a href="mailto:sleekyprogrammers@gmail.com" className="text-blue-600">sleekyprogrammers@gmail.com</a>
+                        Email: <a href="mailto:support@sleekyprogrammers.com" className="text-blue-600">support@sleekyprogrammers.com</a>
                     </p>
                     <div className="flex mt-4 space-x-4">
                         <Link href="https://www.facebook.com/profile.php?id=61565977402117&mibextid=ZbWKwL">

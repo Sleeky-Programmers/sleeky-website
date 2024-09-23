@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { config } from "@/config";
 
 const Footer = () => {
     return (
@@ -8,7 +11,7 @@ const Footer = () => {
                 <div className="flex flex-col items-start mb-8 md:mb-0 flex-1">
                     <Image
                         src="/assets/logo.png"
-                        alt="Sleeky Programmers Ltd"
+                        alt="Sleeky Programmers Ltd."
                         width={150}
                         height={50}
                     />
@@ -21,13 +24,28 @@ const Footer = () => {
                     <h2 className="font-bold text-lg text-gray-800">Quick Links</h2>
                     <ul className="mt-4">
                         <li className="mb-2">
-                            <a href="#" className="text-gray-700 hover:text-blue-600">Home</a>
+                            <p
+                                className="text-gray-700 hover:text-blue-600 cursor-pointer"
+                                onClick={() => config.handleScrollTo("home")}
+                            >
+                                Home
+                            </p>
                         </li>
                         <li className="mb-2">
-                            <a href="#" className="text-gray-700 hover:text-blue-600">About us</a>
+                            <p
+                                className="text-gray-700 hover:text-blue-600 cursor-pointer"
+                                onClick={() => config.handleScrollTo("about-us")}
+                            >
+                                About us
+                            </p>
                         </li>
                         <li className="mb-2">
-                            <a href="#" className="text-gray-700 hover:text-blue-600">Services</a>
+                            <p
+                                className="text-gray-700 hover:text-blue-600 cursor-pointer"
+                                onClick={() => config.handleScrollTo("services")}
+                            >
+                                Services
+                            </p>
                         </li>
                     </ul>
                 </div>

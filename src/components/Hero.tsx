@@ -46,7 +46,7 @@ const Hero = () => {
         <div id="home" className="bg-gray-50 flex flex-col md:flex-row flex-wrap items-center md:justify-between justify-center w-full px-4 md:px-[40px] py-2 relative overflow-hidden">
             <div className="text-center md:text-left mb-8 md:mb-0">
                 <h1 className="hero-title hidden-before-animation text-3xl md:text-4xl lg:text-5xl text-blue-dark font-black leading-snug">
-                    Experience <br /> Excellence with Sleeky <br /> Programmer Ltd
+                    Experience <br /> Excellence with Sleeky <br /> Programmers Ltd.
                 </h1>
                 <p className="hero-description hidden-before-animation my-5 text-sm md:text-base">
                     Delivering sophisticated software solutions to <br />
@@ -93,7 +93,7 @@ const Hero = () => {
                     alt="Arrow" 
                     width={80} 
                     height={80} 
-                    className="hero-arrow hidden-before-animation absolute top-[40px] md:top-[60px] right-[50px] md:right-[70px] z-0" 
+                    className="hero-arrow hidden-before-animation absolute top-[60px] md:top-[60px] right-[50px] md:right-[70px] z-0" 
                 />
 
                 <BackgroundDataCard
@@ -106,7 +106,7 @@ const Hero = () => {
                     src="/assets/hand-heart.png"
                     text="100,000"
                     subText="Happy Clients"
-                    className="hero-card absolute bottom-[60px] md:bottom-[90px] right-[180px] md:right-[350px] z-0"
+                    className="hero-card absolute bottom-[60px] md:bottom-[90px] right-[180px] md:right-[450px] z-0"
                 />
             </div>
 

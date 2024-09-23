@@ -6,7 +6,7 @@ const Overview = () => {
                 <div className="bg-green w-[100px] h-[4px] rounded-full" />
             </div>
 
-            <p className="my-5 text-center">Sleeky Programmers Ltd is a forward-thinking software development company founded in January 2023. Specializing in the creation of engineering products with an emphasis on delivering an optimal user experience, Sleeky Programmers Ltd seeks to set new standards in the software industry. The company&rsquo;s mission is to exceed user expectations by strategically leveraging human behavioral patterns to develop superior software solutions.</p>
+            <p className="my-5 text-center">Sleeky Programmers Ltd. is a forward-thinking software development company founded in January 2023. Specializing in the creation of engineering products with an emphasis on delivering an optimal user experience, Sleeky Programmers Ltd. seeks to set new standards in the software industry. The company&rsquo;s mission is to exceed user expectations by strategically leveraging human behavioral patterns to develop superior software solutions.</p>
         </div>
     );
 }

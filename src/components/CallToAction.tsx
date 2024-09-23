@@ -49,7 +49,7 @@ const CallToAction = () => {
                         />
                     </div>
                     <h1 className="font-black text-blue-dark text-4xl cta-heading">Let&rsquo;s collaborate</h1>
-                    <p className="text-xl leading-8 cta-text">For inquiries and support, reach out to Sleeky Programmers Ltd with the information below</p>
+                    <p className="text-xl leading-8 cta-text">For inquiries and support, reach out to Sleeky Programmers Ltd. with the information below</p>
                 </div>
                 <Image
                     src="/assets/map.png"

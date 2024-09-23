@@ -88,7 +88,7 @@ const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alter
     }
 
     return (
-        <div ref={serviceItemRef} id="services" className="flex items-center justify-between gap-3 flex-wrap mt-[20px]">
+        <div ref={serviceItemRef} className="flex items-center justify-between gap-3 flex-wrap mt-[20px]">
             <div className="flex-1">
                 <div className="flex items-center justify-start gap-2 mb-3 service-item-top">
                     <div className="flex items-center justify-center bg-blue-dark rounded-full p-3">
@@ -122,7 +122,7 @@ const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alter
 
 const Services = () => {
     return (
-        <div className="px-4 md:px-[40px] py-6">
+        <div id="services" className="px-4 md:px-[40px] py-6">
             <div className="flex flex-col items-center text-center">
                 <Image
                     src="/assets/megaphone.png"
@@ -136,7 +136,7 @@ const Services = () => {
                     <div className="bg-green w-[100px] h-[4px] rounded-full service-border" />
                 </div>
                 <p className="text-lg max-w-[600px] text-gray-600 service-text">
-                    Sleeky Programmers Ltd offers a wide range of services designed to meet diverse client needs:
+                    Sleeky Programmers Ltd. offers a wide range of services designed to meet diverse client needs:
                 </p>
             </div>
 

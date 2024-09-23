@@ -54,12 +54,12 @@ const About = () => {
                     />
                 </div>
 
-                <div className="flex flex-col items-center md:items-end justify-center flex-1 text-center md:text-right about-item">
+                <div className="flex flex-col items-center md:items-start justify-center flex-1 text-center md:text-left about-item">
                     <h1 className="font-black text-blue-dark text-3xl md:text-4xl">
                         Sleeky Programmers Ltd.
                     </h1>
                     <p className="text-blue-dark mt-2">
-                        Sleeky Programmers Ltd delivers innovative software focused on
+                        Sleeky Programmers Ltd. delivers innovative software focused on
                         exceptional user experience, leveraging human behavior and insights to
                         exceed expectations.
                     </p>

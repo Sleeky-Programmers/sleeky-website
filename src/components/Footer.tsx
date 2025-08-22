@@ -53,9 +53,7 @@ const Footer = () => {
                 <div className="flex flex-col items-start flex-1">
                     <h2 className="font-bold text-lg text-gray-800">Contact us</h2>
                     <p className="mt-4 text-gray-700">
-                        Address: 4C, Drive 4, Prince and Princess Estate,
-                        <br />
-                        Kaura District, Abuja.
+                        Address: 20, Olanrewaju Street, Akoka, Lagos State
                     </p>
                     <p className="mt-2 text-gray-700">
                         Email: <a href="mailto:support@sleekyprogrammers.com" className="text-blue-600">support@sleekyprogrammers.com</a>

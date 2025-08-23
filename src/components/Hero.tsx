@@ -104,7 +104,7 @@ const Hero = () => {
                 />
                 <BackgroundDataCard
                     src="/assets/hand-heart.png"
-                    text="100,000"
+                    text="10"
                     subText="Happy Clients"
                     className="hero-card absolute bottom-[60px] md:bottom-[90px] right-[180px] md:right-[450px] z-0"
                 />

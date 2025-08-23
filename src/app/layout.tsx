@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Sleeky Programmers Ltd.",
   },
   description: "Experience excellence with Sleeky Programmers Ltd.",
+  keywords: ['sleeky', 'sleek', 'programmers', 'sleeky programmers', 'sleek programmers', 'sleek code', 'sleek coders', 'sleeky coders', 'sleeky code', 'software builders', 'software developers', 'software engineers', 'web developers', 'mobile app developers', 'custom software', 'software solutions', 'tech innovators', 'digital transformation', 'it consultants', 'it services', 'software consultancy'],
   twitter: {
     card: "summary_large_image",
   },

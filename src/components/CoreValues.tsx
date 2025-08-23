@@ -29,7 +29,7 @@ const CoreValues = () => {
 
     return (
         <div className="px-4 md:px-[40px] py-2 mt-[30px]">
-            <div className="flex flex-col items-center justify-center about-item">
+            <div className="flex flex-col items-center justify-center core-value-item">
                 <h1 className="font-bold text-3xl md:text-4xl mb-3 text-blue-dark">Core Values</h1>
                 <div className="bg-green w-[100px] h-[4px] rounded-full" />
             </div>

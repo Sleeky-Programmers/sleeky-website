@@ -95,7 +95,7 @@ const CallToAction = () => {
                         height={23} 
                     />
                     <p className="text-center md:text-left">
-                        4C, Drive 4, Prince and Princess <br /> Estate, Kaura District, Abuja.
+                        20, Olanrewaju Street, Akoka, Lagos State
                     </p>
                 </div>
             </div>

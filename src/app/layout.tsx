@@ -5,10 +5,13 @@ import "./globals.css";
 const raleway = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sleeky Programmers Ltd.",
+  title: {
+    default: "Sleeky Programmers Ltd.",
+    template: "%s | Sleeky Programmers Ltd.",
+  },
   description: "Experience excellence with Sleeky Programmers Ltd.",
-  icons: {
-    icon: '/assets/logo-1.png',
+  twitter: {
+    card: "summary_large_image",
   },
 };
 

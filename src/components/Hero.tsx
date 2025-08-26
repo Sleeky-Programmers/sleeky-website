@@ -15,16 +15,16 @@ type BackgroundDataCardProps = {
 
 const BackgroundDataCard = ({ src, text, subText, className }: BackgroundDataCardProps) => {
     return (
-        <div className={`flex items-center justify-start gap-3 bg-white shadow-2xl w-[250px] md:w-[200px] px-3 py-2 rounded-lg hidden-before-animation ${className}`}>
-            <Image 
-                src={src} 
-                alt={text} 
-                width={20} 
-                height={20} 
+        <div className={`flex items-center justify-start gap-3 bg-white shadow-2xl w-[200px] sm:w-[220px] md:w-[200px] px-3 py-2 rounded-lg hidden-before-animation ${className}`}>
+            <Image
+                src={src}
+                alt={text}
+                width={20}
+                height={20}
             />
             <div>
-                <p className="font-bold text-sm md:text-xs">{text}</p>
-                <p className="font-bold text-sm md:text-xs">{subText}</p>
+                <p className="font-bold text-xs sm:text-sm md:text-xs">{text}</p>
+                <p className="font-bold text-xs sm:text-sm md:text-xs">{subText}</p>
             </div>
         </div>
     );
@@ -43,8 +43,8 @@ const Hero = () => {
     }, []);
 
     return (
-        <div id="home" className="bg-gray-50 flex flex-col md:flex-row flex-wrap items-center md:justify-between justify-center w-full px-4 md:px-[40px] py-2 relative overflow-hidden">
-            <div className="text-center md:text-left mb-8 md:mb-0">
+        <div id="home" className="bg-gray-50 flex flex-col md:flex-row flex-wrap items-center md:justify-between justify-center w-full px-4 md:px-[40px] py-2 relative overflow-hidden min-h-screen md:min-h-auto">
+            <div className="text-center md:text-left mb-8 md:mb-0 z-20">
                 <h1 className="hero-title hidden-before-animation text-3xl md:text-4xl lg:text-5xl text-blue-dark font-black leading-snug">
                     Experience <br /> Excellence with Sleeky <br /> Programmers Ltd.
                 </h1>
@@ -56,66 +56,72 @@ const Hero = () => {
 
                 <div className="hero-button hidden-before-animation flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
                     <Button
-                        text="Get Started" 
-                        onClick={() => config.handleScrollTo("contact-us")} 
+                        text="Get Started"
+                        onClick={() => config.handleScrollTo("contact-us")}
                     />
                     <div
                         className="flex flex-row items-center justify-center md:justify-start gap-2 cursor-pointer"
-                        onClick={() => config.handleScrollTo("about-us")} 
+                        onClick={() => config.handleScrollTo("about-us")}
                     >
-                        <Image 
-                            src="/assets/play-icon.png" 
-                            alt="Learn more" 
-                            width={35} 
-                            height={35} 
+                        <Image
+                            src="/assets/play-icon.png"
+                            alt="Learn more"
+                            width={35}
+                            height={35}
                         />
                         <p className="text-sm md:text-base">Learn more</p>
                     </div>
                 </div>
             </div>
-            <div className="relative z-10 flex justify-center md:justify-end">
-                <Image
-                    src="/assets/hero-img.png" 
-                    alt="Hero" 
-                    width={400} 
-                    height={400} 
-                    className="hero-image hidden-before-animation relative z-10 w-[80%] md:w-[500px] h-auto" 
-                />
-                <Image 
-                    src="/assets/bulb.png" 
-                    alt="Bulb" 
-                    width={150} 
-                    height={150} 
-                    className="hero-bulb hidden-before-animation absolute bottom-[100px] md:bottom-[200px] left-[-20px] z-0" 
-                />
-                <Image 
-                    src="/assets/arrow.png" 
-                    alt="Arrow" 
-                    width={80} 
-                    height={80} 
-                    className="hero-arrow hidden-before-animation absolute top-[60px] md:top-[60px] right-[50px] md:right-[70px] z-0" 
-                />
 
-                <BackgroundDataCard
-                    src="/assets/analytics.png"
-                    text="100%"
-                    subText="Business Growth"
-                    className="hero-card absolute top-[20px] left-[-20px] md:top-[30px] md:left-[-30px] z-0"
-                />
-                <BackgroundDataCard
-                    src="/assets/hand-heart.png"
-                    text="10"
-                    subText="Happy Clients"
-                    className="hero-card absolute bottom-[60px] md:bottom-[90px] right-[180px] md:right-[450px] z-0"
-                />
+            <div className="relative z-10 flex justify-center md:justify-end w-full md:w-auto">
+                <div className="relative">
+                    <Image
+                        src="/assets/hero-img.png"
+                        alt="Hero"
+                        width={400}
+                        height={400}
+                        className="hero-image hidden-before-animation relative z-10 w-[280px] sm:w-[350px] md:w-[400px] lg:w-[500px] h-auto"
+                    />
+
+                    <Image
+                        src="/assets/bulb.png"
+                        alt="Bulb"
+                        width={120}
+                        height={120}
+                        className="hero-bulb hidden-before-animation absolute bottom-[60px] sm:bottom-[80px] md:bottom-[120px] lg:bottom-[200px] left-[-40px] sm:left-[-30px] md:left-[-20px] z-0 w-[80px] sm:w-[100px] md:w-[120px] lg:w-[150px]"
+                    />
+
+                    <Image
+                        src="/assets/arrow.png"
+                        alt="Arrow"
+                        width={60}
+                        height={60}
+                        className="hero-arrow hidden-before-animation absolute top-[20px] sm:top-[30px] md:top-[40px] lg:top-[60px] right-[10px] sm:right-[20px] md:right-[30px] lg:right-[50px] z-0 w-[50px] sm:w-[60px] md:w-[70px] lg:w-[80px]"
+                    />
+
+                    <BackgroundDataCard
+                        src="/assets/analytics.png"
+                        text="100%"
+                        subText="Business Growth"
+                        className="hero-card absolute top-[-10px] sm:top-[0px] md:top-[10px] lg:top-[30px] left-[-30px] md:left-[-40px] lg:left-[-30px] z-0"
+                    />
+
+                    <BackgroundDataCard
+                        src="/assets/hand-heart.png"
+                        text="10"
+                        subText="Happy Clients"
+                        className="hero-card absolute bottom-[20px] sm:bottom-[30px] md:bottom-[50px] lg:bottom-[90px] right-[100px] md:right-[400px] z-0"
+                    />
+                </div>
             </div>
 
-            <Image 
-                src="/assets/hero-bubble.png" 
-                alt="Bubble" 
-                width={50} 
-                height={50} 
-                className="hero-bubble hidden-before-animation absolute right-0 top-[30px] md:top-[50px] z-0 w-[30px] md:w-[50px] h-[100px] md:h-[300px]" 
+            <Image
+                src="/assets/hero-bubble.png"
+                alt="Bubble"
+                width={50}
+                height={50}
+                className="hero-bubble hidden-before-animation absolute right-0 top-[30px] md:top-[50px] z-0 w-[20px] sm:w-[30px] md:w-[40px] lg:w-[50px] h-[60px] sm:h-[80px] md:h-[150px] lg:h-[300px]"
             />
         </div>
     );

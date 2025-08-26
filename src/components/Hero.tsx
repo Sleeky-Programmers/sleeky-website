@@ -111,7 +111,7 @@ const Hero = () => {
                         src="/assets/hand-heart.png"
                         text="10"
                         subText="Happy Clients"
-                        className="hero-card absolute bottom-[20px] sm:bottom-[30px] md:bottom-[50px] lg:bottom-[90px] right-[100px] md:right-[300px] z-0"
+                        className="hero-card absolute bottom-[20px] sm:bottom-[30px] md:bottom-[50px] lg:bottom-[90px] right-[100px] md:right-[400px] z-0"
                     />
                 </div>
             </div>

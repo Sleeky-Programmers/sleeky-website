@@ -31,6 +31,22 @@ const config: Config = {
         transparentBlack: "rgba(0,0,0,0.45)",
         transparentWhite: "rgba(255,255,255,0.1)",
       },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          lg: '2.5rem',
+          xl: '3.5rem',
+          '2xl': '4.5rem',
+        },
+        screens: {
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1280px',
+          '2xl': '1600px',
+        },
+      },
     },
   },
   plugins: [],

@@ -70,9 +70,9 @@ const ContactForm = () => {
     }
 
     return (
-        <div className="px-4 md:px-[40px] py-12" id="contact-us">
-            <div className="max-w-lg mx-auto text-center">
-                <h2 className="text-3xl font-semibold contact-heading">Say hello</h2>
+        <div className="px-6 lg:px-20 xl:px-36 2xl:px-48 py-12" id="contact-us">
+          <div className="max-w-2xl lg:max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold contact-heading">Say hello</h2>
                 <p className="mt-4 text-gray-600 contact-heading">
                     We&rsquo;re here to connect. Reach out to us through the options below, and let&rsquo;s start a conversation.
                 </p>

@@ -47,8 +47,8 @@ const Clients = () => {
   };
 
   return (
-    <div id="clients" className="px-4 md:px-[40px] py-6 mb-4">
-      <div className="flex items-center justify-center flex-col mb-5">
+    <div id="clients" className="px-6 lg:px-20 xl:px-36 2xl:px-48 py-6 mb-4">
+      <div className="flex items-center justify-center flex-col">
         <h2 className="text-3xl font-bold text-blue-dark mb-2 client-item">
           Our Valued Clients
         </h2>
@@ -61,10 +61,10 @@ const Clients = () => {
             <Image
               src={client.image}
               alt={client.name}
-              width={200}
-              height={50}
+              width={260}
+              height={80}
               onLoadingComplete={handleImageLoad}
-              className="object-contain"
+              className="object-contain w-[120px] md:w-[160px] lg:w-[200px] xl:w-[240px]"
             />
           </div>
         ))}

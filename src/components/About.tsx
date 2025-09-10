@@ -28,7 +28,7 @@ const About = () => {
     }, []);
 
     return (
-        <div id="about-us" className="px-4 md:px-[40px] py-2">
+        <div id="about-us" className="px-6 lg:px-20 xl:px-36 2xl:px-48 py-8">
             <div className="flex flex-col items-center justify-center about-item">
                 <div className="bg-green w-[100px] h-[4px] rounded-full" />
                 <h1 className="font-bold text-3xl md:text-4xl mt-3 text-blue-dark">
@@ -39,11 +39,11 @@ const About = () => {
             <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-3 about-item">
                     <Image
-                        src="/assets/about-1.jpeg"
-                        alt="About 1"
-                        width={300}
-                        height={200}
-                        className="rounded-lg object-cover w-full md:w-[300px] h-[200px] md:h-[300px]"
+                      src="/assets/about-1.jpeg"
+                      alt="About 1"
+                      width={600}
+                      height={400}
+                      className="rounded-lg object-cover w-full md:w-[340px] lg:w-[420px] h-[200px] md:h-[300px] lg:h-[360px]"
                     />
                     <Image
                         src="/assets/about-2.jpeg"
@@ -55,8 +55,8 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-col items-center md:items-start justify-center flex-1 text-center md:text-left about-item">
-                    <h1 className="font-black text-blue-dark text-3xl md:text-4xl">
-                        Sleeky Programmers Ltd.
+                    <h1 className="font-black text-blue-dark text-3xl md:text-4xl lg:text-5xl">
+                      Sleeky Programmers Ltd.
                     </h1>
                     <p className="text-blue-dark mt-2">
                         Sleeky Programmers Ltd. delivers innovative software focused on

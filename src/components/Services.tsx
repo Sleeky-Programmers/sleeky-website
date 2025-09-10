@@ -57,11 +57,11 @@ const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alter
         return (
             <div ref={serviceItemRef} className="flex items-center justify-between gap-3 flex-wrap-reverse">
                 <Image
-                    src={img}
-                    alt={`${topTitle} ${bottomTitle}`}
-                    width={450}
-                    height={450}
-                    className="flex-1 service-item-image"
+                  src={img}
+                  alt={`${topTitle} ${bottomTitle}`}
+                  width={900}
+                  height={900}
+                  className="flex-1 service-item-image w-full md:w-[420px] lg:w-[520px] xl:w-[640px] h-auto"
                 />
                 <div className="flex-1">
                     <div className="flex items-center justify-start gap-2 mb-3 service-item-top">
@@ -77,8 +77,8 @@ const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alter
                     </div>
                     <div>
                         <div className="flex flex-col items-start justify-center mb-2 service-item-top">
-                            <h1 className="font-black text-4xl text-green">{topTitle}</h1>
-                            <h1 className="font-black text-4xl text-blue-dark">{bottomTitle}</h1>
+                            <h1 className="text-blue-dark font-black text-3xl md:text-4xl lg:text-5xl">{topTitle}</h1>
+                            <h1 className="text-blue-dark font-black text-3xl md:text-4xl lg:text-5xl">{bottomTitle}</h1>
                         </div>
                         <p className="service-item-bottom">{content}</p>
                     </div>
@@ -122,7 +122,7 @@ const ServiceItem = ({ img, topInfo, icon, topTitle, bottomTitle, content, alter
 
 const Services = () => {
     return (
-        <div id="services" className="px-4 md:px-[40px] py-6">
+        <div id="services" className="px-6 lg:px-20 xl:px-36 2xl:px-48 py-8">
             <div className="flex flex-col items-center text-center">
                 <Image
                     src="/assets/megaphone.png"

@@ -6,8 +6,8 @@ import { config } from "@/config";
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-100 px-4 md:px-[40px] py-8">
-            <div className="flex flex-col md:flex-row md:items-center items-start justify-between gap-3">
+        <footer className="bg-gray-100 px-6 lg:px-20 xl:px-36 2xl:px-48 py-10">
+            <div className="flex flex-col md:flex-row md:items-center items-start justify-between gap-6">
                 <div className="flex flex-col items-start mb-8 md:mb-0 flex-1">
                     <Image
                         src="/assets/logo.png"

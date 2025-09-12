@@ -23,11 +23,11 @@ jobs:
       # Install dependencies (from cache if possible)
       - run: npm ci
 
-      # Build app
-      - run: npm run build
-
       # Install Vercel CLI
       - run: npm install -g vercel
+
+      # Build app
+      - run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       # Deploy step
       - name: Deploy to Vercel

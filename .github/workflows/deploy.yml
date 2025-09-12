@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORGANIZATION_ID: ${{ secrets.VERCEL_ORGANIZATION_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORGANIZATION_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           # fail early if secrets missing
@@ -41,7 +41,7 @@ jobs:
             echo "❌ Missing VERCEL_TOKEN secret!"
             exit 1
           fi
-          if [ -z "$VERCEL_ORGANIZATION_ID" ]; then
+          if [ -z "$VERCEL_ORG_ID" ]; then
             echo "❌ Missing VERCEL_ORGANIZATION_ID secret!"
             exit 1
           fi

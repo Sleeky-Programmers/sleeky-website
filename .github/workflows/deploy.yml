@@ -23,11 +23,11 @@ jobs:
       # Install dependencies (from cache if possible)
       - run: npm ci
 
+      # Build app
+      - run: npm run build
+
       # Install Vercel CLI
       - run: npm install -g vercel
-
-      # Build app
-      - run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       # Deploy step
       - name: Deploy to Vercel
@@ -53,8 +53,8 @@ jobs:
           # Use the prebuilt output (from `npm run build`) to deploy
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "🚀 Deploying to Production (Vercel project id: $VERCEL_PROJECT_ID)..."
-            vercel deploy --prebuilt --prod --yes --token="$VERCEL_TOKEN"
+            vercel deploy --prod --yes --token="$VERCEL_TOKEN"
           else
             echo "🧪 Deploying to Preview (Vercel project id: $VERCEL_PROJECT_ID)..."
-            vercel deploy --prebuilt --yes --token="$VERCEL_TOKEN"
+            vercel deploy --yes --token="$VERCEL_TOKEN"
           fi

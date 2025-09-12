@@ -1,8 +1,8 @@
 const Overview = () => {
     return (
-        <div className="px-4 md:px-[40px] py-2 mt-[30px]">
+        <div className="px-6 lg:px-20 xl:px-36 2xl:px-48 py-8 mt-8">
             <div className="flex flex-col items-center justify-center about-item">
-                <h1 className="font-bold text-3xl md:text-4xl mb-3 text-blue-dark">Overview</h1>
+                <h1 className="font-bold text-blue-dark text-3xl md:text-4xl lg:text-5xl mb-3">Overview</h1>
                 <div className="bg-green w-[100px] h-[4px] rounded-full" />
             </div>
 

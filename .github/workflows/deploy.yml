@@ -1,0 +1,60 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - uses: actions/checkout@v3
+
+      # Setup Node.js + cache
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: "npm"
+
+      # Install dependencies (from cache if possible)
+      - run: npm ci
+
+      # Build app
+      - run: npm run build
+
+      # Install Vercel CLI
+      - run: npm install -g vercel
+
+      # Deploy step
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORGANIZATION_ID: ${{ secrets.VERCEL_ORGANIZATION_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          # fail early if secrets missing
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "❌ Missing VERCEL_TOKEN secret!"
+            exit 1
+          fi
+          if [ -z "$VERCEL_ORGANIZATION_ID" ]; then
+            echo "❌ Missing VERCEL_ORGANIZATION_ID secret!"
+            exit 1
+          fi
+          if [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "❌ Missing VERCEL_PROJECT_ID secret!"
+            exit 1
+          fi
+
+          # Use the prebuilt output (from `npm run build`) to deploy
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "🚀 Deploying to Production (Vercel project id: $VERCEL_PROJECT_ID)..."
+            vercel deploy --prebuilt --prod --yes --token="$VERCEL_TOKEN"
+          else
+            echo "🧪 Deploying to Preview (Vercel project id: $VERCEL_PROJECT_ID)..."
+            vercel deploy --prebuilt --yes --token="$VERCEL_TOKEN"
+          fi

@@ -37,16 +37,11 @@ const CoreValues = () => {
             <div className="bg-white p-5 rounded-lg shadow-lg mt-4">
                 <div className="flex flex-col md:flex-row items-center justify-around gap-6">
                     <div className='core-value-item flex items-center justify-start gap-3 flex-1'>
-                        <div className="bg-purple-veryLight flex items-center justify-center p-4 px-5 rounded-lg">
-                            <Image
-                                src="/assets/excellence.png"
-                                alt="Excellence"
-                                width={30}
-                                height={30}
-                            />
+                        <div className="bg-purple-veryLight flex items-center justify-center p-4 md:p-6 rounded-lg">
+                          <Image src="/assets/excellence.png" alt="Excellence" width={40} height={40}/>
                         </div>
                         <div className='flex flex-col items-start justify-center gap-2'>
-                            <h1 className="font-bold text-xl">Excellence</h1>
+                            <h1 className="font-bold text-xl md:text-2xl">Excellence</h1>
                             <p>Commitment to delivering the highest quality in every aspect of the development process.</p>
                         </div>
                     </div>

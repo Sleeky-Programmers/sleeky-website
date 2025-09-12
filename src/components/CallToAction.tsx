@@ -37,7 +37,7 @@ const CallToAction = () => {
     ]
 
     return (
-        <div className="bg-gray-50 px-4 md:px-[40px] py-6 ">
+        <div className="bg-gray-50 px-6 lg:px-20 xl:px-36 2xl:px-48 py-8">
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                 <div className="flex flex-col items-start justify-center gap-3 text-center md:text-left">
                     <div className="bg-gray-200 p-2 flex items-center justify-center rounded-full">
@@ -48,16 +48,10 @@ const CallToAction = () => {
                             height={30}
                         />
                     </div>
-                    <h1 className="font-black text-blue-dark text-4xl cta-heading">Let&rsquo;s collaborate</h1>
+                    <h1 className="font-black text-blue-dark text-3xl md:text-4xl lg:text-5xl cta-heading">Let&rsquo;s collaborate</h1>
                     <p className="text-xl leading-8 cta-text">For inquiries and support, reach out to Sleeky Programmers Ltd. with the information below:</p>
                 </div>
-                <Image
-                    src="/assets/map.png"
-                    alt="Map"
-                    width={500}
-                    height={300}
-                    className="w-full md:w-[500px] h-auto cta-image"
-                />
+                <Image src="/assets/map.png" alt="Map" width={1200} height={700} className="w-full md:w-[600px] lg:w-[800px] xl:w-[1000px] h-auto cta-image"/>
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-center mt-4 gap-4">

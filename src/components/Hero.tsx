@@ -15,7 +15,7 @@ type BackgroundDataCardProps = {
 
 const BackgroundDataCard = ({ src, text, subText, className }: BackgroundDataCardProps) => {
     return (
-        <div className={`flex items-center justify-start gap-3 bg-white shadow-2xl w-[200px] sm:w-[220px] md:w-[200px] px-3 py-2 rounded-lg hidden-before-animation ${className}`}>
+        <div className={`flex items-center gap-4 bg-white shadow-2xl px-4 py-3 rounded-lg hidden-before-animation ${className} w-[200px] sm:w-[220px] md:w-[240px] lg:w-[300px]`}>
             <Image
                 src={src}
                 alt={text}
@@ -43,22 +43,21 @@ const Hero = () => {
     }, []);
 
     return (
-        <div id="home" className="bg-gray-50 flex flex-col md:flex-row flex-wrap items-center md:justify-between justify-center w-full px-4 md:px-[40px] py-2 relative overflow-hidden min-h-screen md:min-h-auto">
+        <div id="home" className="bg-gray-50 flex flex-col md:flex-row items-center md:justify-between justify-center w-full px-6 lg:px-20 xl:px-36 2xl:px-48 py-8 relative overflow-hidden min-h-screen md:min-h-auto">
             <div className="text-center md:text-left mb-8 md:mb-0 z-20">
-                <h1 className="hero-title hidden-before-animation text-3xl md:text-4xl lg:text-5xl text-blue-dark font-black leading-snug">
-                    Experience <br /> Excellence with Sleeky <br /> Programmers Ltd.
+                <h1 className="hero-title hidden-before-animation text-[clamp(2rem,3.5vw,4.5rem)] md:text-[clamp(2.5rem,3.2vw,5rem)] font-black text-blue-dark leading-tight">
+                  Experience <br /> Excellence with Sleeky <br /> Programmers Ltd.
                 </h1>
-                <p className="hero-description hidden-before-animation my-5 text-sm md:text-base">
+                <p className="hero-description hidden-before-animation my-6 text-sm md:text-base lg:text-lg">
                     Delivering sophisticated software solutions to <br />
                     enhance your operations and drive success. <br />
                     Let&apos;s partner to create lasting impact.
                 </p>
 
                 <div className="hero-button hidden-before-animation flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
-                    <Button
-                        text="Get Started"
-                        onClick={() => config.handleScrollTo("contact-us")}
-                    />
+                    <div className="hero-button hidden-before-animation flex flex-col md:flex-row items-center gap-4">
+                      <Button text="Get Started" onClick={() => config.handleScrollTo("contact-us")} />
+                    </div>
                     <div
                         className="flex flex-row items-center justify-center md:justify-start gap-2 cursor-pointer"
                         onClick={() => config.handleScrollTo("about-us")}
@@ -77,11 +76,11 @@ const Hero = () => {
             <div className="relative z-10 flex justify-center md:justify-end w-full md:w-auto">
                 <div className="relative">
                     <Image
-                        src="/assets/hero-img.png"
-                        alt="Hero"
-                        width={400}
-                        height={400}
-                        className="hero-image hidden-before-animation relative z-10 w-[280px] sm:w-[350px] md:w-[400px] lg:w-[500px] h-auto"
+                      src="/assets/hero-img.png"
+                      alt="Hero"
+                      width={800}
+                      height={800}
+                      className="hero-image hidden-before-animation relative z-10 w-[280px] sm:w-[350px] md:w-[400px] lg:w-[520px] xl:w-[640px] 2xl:w-[760px] h-auto"
                     />
 
                     <Image

@@ -1,4 +1,4 @@
-# Sleeky Programmers Website
+# Sleeky Programmers Ltd. Website
 
 ## Get Started
 

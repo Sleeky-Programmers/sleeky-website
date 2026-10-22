@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={raleway.className}>
         {children}
+        <WhatsAppButton />
         <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`} />
       </body>
     </html>

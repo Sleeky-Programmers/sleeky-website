@@ -9,43 +9,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blue: {
-          veryLight: "#E2F3FF",
-          light: "#4374A4",
-          normal: "#0073C6",
-          dark: "#2C3E50",
+        // Brand tokens (developer brief, section 2.2)
+        ink: {
+          DEFAULT: "#070B10",
+          raised: "#0A1016",
         },
-        green: "#58D68D",
-        purple: {
-          veryLight: "#F1E8FF",
-          normal: "#6E00FA",
+        surface: "#0E151D",
+        line: "#1C2733",
+        slate: "#2C3E50",
+        green: {
+          DEFAULT: "#58D68D",
+          hover: "#7FE3A8",
+          deep: "#0F2219",
+          ink: "#0E2A1B",
         },
-        red: {
-          veryLight: "#FFF2F2",
-          normal: "#FF4E4E",
-        },
-        lilac: {
-          veryLight: "#FFE7FB",
-          normal: "#B50097",
-        },
-        transparentBlack: "rgba(0,0,0,0.45)",
-        transparentWhite: "rgba(255,255,255,0.1)",
+        chip: "#13202B",
+        muted: "#9AA7B4",
+        soft: "#B7C2CC",
+        dim: "#5F6E7C",
+        faint: "#6F7D8A",
+        whatsapp: "#25D366",
       },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: '1rem',
-          lg: '2.5rem',
-          xl: '3.5rem',
-          '2xl': '4.5rem',
-        },
-        screens: {
-          sm: '640px',
-          md: '768px',
-          lg: '1024px',
-          xl: '1280px',
-          '2xl': '1600px',
-        },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-archivo)", "var(--font-inter)", "sans-serif"],
+      },
+      maxWidth: {
+        site: "1320px",
+      },
+      transitionTimingFunction: {
+        sleek: "cubic-bezier(.16,.84,.2,1)",
       },
     },
   },

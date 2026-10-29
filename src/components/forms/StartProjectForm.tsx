@@ -136,7 +136,7 @@ const StartProjectForm = () => {
     };
 
     const submit = async () => {
-        if (!captchaToken) {
+        if (!config.RECAPTCHA_DISABLED && !captchaToken) {
             setSubmitError("Please confirm you're not a robot.");
             return;
         }
@@ -154,7 +154,7 @@ const StartProjectForm = () => {
         if (email.trim()) body.append("email", email.trim());
         if (phone.trim()) body.append("phone", phone.trim());
         body.append("channel", channel);
-        body.append("captchaToken", captchaToken);
+        body.append("captchaToken", config.RECAPTCHA_DISABLED ? "captcha-disabled" : captchaToken);
         if (file) body.append("file", file);
 
         // Links the brief to this visitor's HubSpot page history. The cookie only
@@ -399,7 +399,13 @@ const StartProjectForm = () => {
                         </fieldset>
 
                         <div className="mt-7">
-                            <Recaptcha ref={captchaRef} onToken={(token) => { setCaptchaToken(token); if (token) setSubmitError(""); }} />
+                            {config.RECAPTCHA_DISABLED ? (
+                                <p className="m-0 inline-block rounded-xl border border-dashed border-slate px-4 py-3 text-[13px] text-muted">
+                                    reCAPTCHA is turned off on this test version.
+                                </p>
+                            ) : (
+                                <Recaptcha ref={captchaRef} onToken={(token) => { setCaptchaToken(token); if (token) setSubmitError(""); }} />
+                            )}
                         </div>
 
                         <p className="m-0 mt-[22px] text-[13px] leading-normal text-muted">

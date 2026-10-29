@@ -157,6 +157,12 @@ const StartProjectForm = () => {
         body.append("captchaToken", captchaToken);
         if (file) body.append("file", file);
 
+        // Links the brief to this visitor's HubSpot page history. The cookie only
+        // exists if they accepted analytics cookies.
+        const hutk = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1];
+        if (hutk) body.append("hutk", hutk);
+        body.append("pageUri", window.location.href);
+
         try {
             const response = await fetch(`${config.BASE_API_URL}/brief`, { method: "POST", body });
             const data = await response.json().catch(() => ({}));

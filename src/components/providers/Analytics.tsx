@@ -45,7 +45,7 @@ const Analytics = () => {
             {consent === "granted" && config.HUBSPOT_PORTAL_ID && (
                 <Script
                     id="hs-script-loader"
-                    src={`https://js.hs-scripts.com/${config.HUBSPOT_PORTAL_ID}.js`}
+                    src={`https://${config.HUBSPOT_SCRIPT_HOST}/${config.HUBSPOT_PORTAL_ID}.js`}
                     strategy="afterInteractive"
                 />
             )}

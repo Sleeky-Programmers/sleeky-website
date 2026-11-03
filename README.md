@@ -13,7 +13,7 @@
 
 All text, case studies, articles and contact details are read through `src/lib/content`. Where they come from depends on one setting:
 
-- **`CMS_API_URL` set** (the CMS's address, e.g. `https://cms.sleekyprogrammers.com`): content comes from the Sleeky CMS's public API. Pages are cached and refreshed at least hourly, and straight away when the CMS reports a change.
+- **`CMS_API_URL` set** (the CMS's address, e.g. `https://cms.sleekyprogrammers.com`): content comes from the Sleeky CMS's public API. Pages are cached and refreshed at least every minute, and straight away when the CMS reports a change. (A refresh happens in the background: the first visit after it's due still sees the cached page, the next one sees the new text.)
 - **`CMS_API_URL` not set:** content comes from the files in `src/lib/content/data` (the original website copy). Useful before the CMS is deployed and for local work without it.
 
 If the CMS is set but can't be reached, the request fails rather than falling back, so the website keeps serving the last good version of each page instead of older local text. A build needs the CMS to be reachable.
@@ -30,7 +30,9 @@ Set up both sides with the **same** secret:
 | CMS | `REVALIDATE_SECRET` | The same string |
 | CMS | `WEBSITE_REVALIDATE_URL` | `https://sleekyprogrammers.com/api/revalidate` (or the preview's address) |
 
-Without these, changes still appear within an hour.
+Without these, changes still appear within about a minute.
+
+For a **protected preview** (Vercel Authentication on), the ping also needs the website project's bypass key: copy the secret from this project's Settings → Deployment Protection → Protection Bypass for Automation into the CMS's `WEBSITE_PROTECTION_BYPASS`. It must be the *website* project's secret, not the CMS's own.
 
 ### Environment variables
 

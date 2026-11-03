@@ -6,8 +6,8 @@ import { ArrowUpRight } from "@/components/ui/icons";
 import { getInsights } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
-// New articles show as soon as the CMS reports them (see /api/revalidate), or within an hour.
-export const revalidate = 3600;
+// New articles show as soon as the CMS reports them (see /api/revalidate), or within a minute.
+export const revalidate = 60;
 
 export const metadata = pageMetadata({
   title: "Insights: Websites, Apps & Automation | Sleeky",

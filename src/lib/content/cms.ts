@@ -4,12 +4,16 @@ import type { AboutContent, CaseStudy, CaseStudyImage, HomeContent, Insight, Ins
 import { services as localServices } from "./data/services";
 
 // Content from the Sleeky CMS's public, read-only API (sleeky-cms: /api/public/*).
-// Responses are cached and refreshed hourly, or straight away when the CMS pings
+// Responses are cached and refreshed every minute, or straight away when the CMS pings
 // /api/revalidate. If the CMS can't be reached, the request throws: Next keeps
 // serving the last good version of the page rather than older local copy.
 
-/** Refresh at least this often even without a ping from the CMS. */
-const REVALIDATE_SECONDS = 3600;
+/**
+ * Refresh at least this often even without a ping from the CMS, so an edit shows
+ * within about a minute if a ping is ever lost. The CMS caches its public API for
+ * 60 seconds too, so this costs at most one CMS request per page a minute.
+ */
+const REVALIDATE_SECONDS = 60;
 
 /** The six service pages, in listing order. Their addresses are fixed; the content is edited in the CMS. */
 const SERVICE_SLUGS = localServices.map((service) => service.slug);

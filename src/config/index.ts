@@ -6,7 +6,4 @@ export const config = {
   RECAPTCHA_DISABLED:
     process.env.NEXT_PUBLIC_RECAPTCHA_DISABLED === "true" && process.env.NEXT_PUBLIC_VERCEL_ENV !== "production",
   GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "",
-  HUBSPOT_PORTAL_ID: process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "",
-  // Sleeky's HubSpot account is hosted in the EU, which serves its tracking script from js-eu1.
-  HUBSPOT_SCRIPT_HOST: process.env.NEXT_PUBLIC_HUBSPOT_SCRIPT_HOST || "js-eu1.hs-scripts.com",
 };

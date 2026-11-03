@@ -157,10 +157,7 @@ const StartProjectForm = () => {
         body.append("captchaToken", config.RECAPTCHA_DISABLED ? "captcha-disabled" : captchaToken);
         if (file) body.append("file", file);
 
-        // Links the brief to this visitor's HubSpot page history. The cookie only
-        // exists if they accepted analytics cookies.
-        const hutk = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1];
-        if (hutk) body.append("hutk", hutk);
+        // Recorded on the Zoho CRM lead, so the team can see where the brief came from.
         body.append("pageUri", window.location.href);
 
         try {

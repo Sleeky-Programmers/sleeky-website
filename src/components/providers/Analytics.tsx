@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { config } from "@/config";
 import { CONSENT_EVENT, ConsentChoice, OPEN_CONSENT_EVENT, readConsent, saveConsent } from "@/lib/analytics";
 
-// Cookie consent (brief 4.4, Nigeria Data Protection Act 2023): GA4 and the
-// HubSpot tracking code only load after the visitor accepts.
+// Cookie consent (brief 4.4, Nigeria Data Protection Act 2023): GA4 only loads
+// after the visitor accepts.
 const Analytics = () => {
     const [consent, setConsent] = useState<ConsentChoice | null>(null);
     const [showBanner, setShowBanner] = useState(false);
@@ -42,13 +41,6 @@ const Analytics = () => {
     return (
         <>
             {consent === "granted" && config.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={config.GA_MEASUREMENT_ID} />}
-            {consent === "granted" && config.HUBSPOT_PORTAL_ID && (
-                <Script
-                    id="hs-script-loader"
-                    src={`https://${config.HUBSPOT_SCRIPT_HOST}/${config.HUBSPOT_PORTAL_ID}.js`}
-                    strategy="afterInteractive"
-                />
-            )}
 
             {showBanner && (
                 <div

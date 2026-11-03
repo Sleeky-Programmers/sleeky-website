@@ -32,7 +32,7 @@ export const channelOptions: { id: Channel; label: string; text: string }[] = [
 export const stepNames = ["Services", "Your project", "Timeline", "Contact"];
 
 // Vercel serverless functions accept request bodies up to 4.5 MB, so attachments
-// are capped at 4 MB until uploads go direct to storage (or HubSpot's file API).
+// are capped at 4 MB until uploads go direct to storage.
 export const MAX_FILE_BYTES = 4 * 1024 * 1024;
 export const ACCEPTED_FILE_TYPES = ".pdf,.doc,.docx,.png,.jpg,.jpeg";
 export const ACCEPTED_EXTENSIONS = ["pdf", "doc", "docx", "png", "jpg", "jpeg"];

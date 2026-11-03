@@ -43,7 +43,7 @@ For a **protected preview** (Vercel Authentication on), the ping also needs the 
 | `NEXT_PUBLIC_BASE_URL` | The website's own address, for canonical links and the sitemap |
 | `NEXT_PUBLIC_API_URL` | The contact/brief API |
 | `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`, `NEXT_PUBLIC_RECAPTCHA_DISABLED` | reCAPTCHA (the switch is ignored in production) |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_HUBSPOT_PORTAL_ID` | Analytics and HubSpot tracking |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics (loads only after cookie consent) |
 
 ### Notes
 

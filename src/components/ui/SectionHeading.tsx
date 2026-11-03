@@ -1,16 +1,18 @@
+import { HighlightedLines } from "./Highlight";
+
 type SectionHeadingProps = {
-    lead: string;
-    accent: string;
+    /** e.g. "Featured\n*work*": new lines break, *starred* words are green */
+    heading: string;
     description?: string;
     as?: "h1" | "h2";
 };
 
 // "Featured / work", "What we / build" pattern from the design canvas.
-const SectionHeading = ({ lead, accent, description, as: Tag = "h2" }: SectionHeadingProps) => (
+const SectionHeading = ({ heading, description, as: Tag = "h2" }: SectionHeadingProps) => (
     <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="rv">
             <Tag className="m-0 font-display text-[clamp(48px,7vw,104px)] font-extrabold leading-[0.95] tracking-[-0.045em]">
-                {lead}<br /><span className="text-green">{accent}</span>
+                <HighlightedLines text={heading} />
             </Tag>
         </div>
         {description && (

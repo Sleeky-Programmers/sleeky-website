@@ -1,10 +1,12 @@
 import Logo from "@/components/ui/Logo";
 import FooterBar from "@/components/layout/FooterBar";
 import { ChatBubble } from "@/components/ui/icons";
+import { getSiteSettings } from "@/lib/content";
 import { whatsappLink } from "@/lib/site";
 
 // Distraction-free layout for Start a project and Thank you, as on the design canvas.
-export default function FocusLayout({ children }: { children: React.ReactNode }) {
+export default async function FocusLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSiteSettings();
   return (
     <div className="relative min-h-screen overflow-x-clip">
       <div aria-hidden="true" className="glow pointer-events-none absolute right-[-10%] top-[-10%] h-[640px] w-[640px] rounded-full bg-green opacity-[0.14]" />
@@ -12,7 +14,7 @@ export default function FocusLayout({ children }: { children: React.ReactNode })
         <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-3 px-6 py-7">
           <Logo height={36} label="Sleeky Programmers — back to home" />
           <a
-            href={whatsappLink("Hi Sleeky, I'd rather chat about my project on WhatsApp.")}
+            href={whatsappLink(settings, "Hi Sleeky, I'd rather chat about my project on WhatsApp.")}
             target="_blank"
             rel="noopener noreferrer"
             data-track-location="brief_header"

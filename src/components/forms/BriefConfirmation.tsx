@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { whatsappLink } from "@/lib/site";
 import { BRIEF_STORAGE_KEY, Channel, channelOptions } from "./briefOptions";
 
 type SentBrief = { firstName?: string; channel?: Channel; hasEmail?: boolean };
 
 // Confirmation screen from the design canvas (brief 4.1: reply within 24 hours by the chosen channel).
-const BriefConfirmation = () => {
+const BriefConfirmation = ({ whatsappHref }: { whatsappHref: string }) => {
     const [brief, setBrief] = useState<SentBrief>({});
 
     useEffect(() => {
@@ -37,7 +36,7 @@ const BriefConfirmation = () => {
             </p>
             <div className="step-in mt-10 flex flex-wrap items-center gap-3">
                 <a
-                    href={whatsappLink("Hi Sleeky, I just sent a project brief on your website.")}
+                    href={whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-track-location="thank_you"

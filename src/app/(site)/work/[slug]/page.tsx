@@ -9,15 +9,15 @@ import { caseStudyJsonLd, pageMetadata } from "@/lib/seo";
 
 type Params = { params: { slug: string } };
 
-export const dynamicParams = false;
-
+// Published case studies are built ahead; ones published later in the CMS render
+// on first visit (unknown addresses get the 404 page).
 export async function generateStaticParams() {
   const studies = await getCaseStudies();
   return studies.map((study) => ({ slug: study.slug }));
 }
 
 export async function generateMetadata({ params }: Params) {
-  const study = await getCaseStudy(params.slug);
+  const study = (await getCaseStudy(params.slug))?.caseStudy;
   if (!study) return {};
   return pageMetadata({
     title: study.metaTitle,
@@ -32,12 +32,10 @@ const detailLabel = "text-xs uppercase tracking-[0.12em] text-muted";
 
 // Case study template (design canvas: /work/votely)
 export default async function CaseStudyPage({ params }: Params) {
-  const study = await getCaseStudy(params.slug);
-  if (!study) notFound();
+  const result = await getCaseStudy(params.slug);
+  if (!result) notFound();
 
-  const allStudies = await getCaseStudies();
-  const index = allStudies.findIndex((item) => item.slug === study.slug);
-  const next = allStudies.length > 1 ? allStudies[(index + 1) % allStudies.length] : null;
+  const { caseStudy: study, next } = result;
   const hasResults = !!study.results?.length;
 
   return (
@@ -125,7 +123,7 @@ export default async function CaseStudyPage({ params }: Params) {
                 </div>
               );
               return (
-                <div key={feature.title} className={`flex items-center gap-14 ${reversed ? "flex-wrap-reverse" : "flex-wrap"}`}>
+                <div key={featureIndex} className={`flex items-center gap-14 ${reversed ? "flex-wrap-reverse" : "flex-wrap"}`}>
                   {reversed ? <>{image}{text}</> : <>{text}{image}</>}
                 </div>
               );
@@ -140,10 +138,10 @@ export default async function CaseStudyPage({ params }: Params) {
               <>
                 <h2 className="rv m-0 text-sm font-normal uppercase tracking-[0.14em] text-muted">Results</h2>
                 <dl className="mt-7 grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
-                  {study.results!.map((result) => (
-                    <div key={result.label} className="rv flex flex-col-reverse border-t-2 border-green pt-6">
-                      <dt className="mt-2.5 text-base text-muted">{result.label}</dt>
-                      <dd className="m-0 font-display text-[clamp(56px,6vw,88px)] font-extrabold leading-none tracking-[-0.05em]">{result.value}</dd>
+                  {study.results!.map((item, index) => (
+                    <div key={index} className="rv flex flex-col-reverse border-t-2 border-green pt-6">
+                      <dt className="mt-2.5 text-base text-muted">{item.label}</dt>
+                      <dd className="m-0 font-display text-[clamp(56px,6vw,88px)] font-extrabold leading-none tracking-[-0.05em]">{item.value}</dd>
                     </div>
                   ))}
                 </dl>
@@ -174,7 +172,7 @@ export default async function CaseStudyPage({ params }: Params) {
         )}
       </main>
 
-      <CtaFooter heading={["Want results like these?"]} variant="inline" />
+      <CtaFooter heading="Want results like these?" variant="inline" />
     </>
   );
 }

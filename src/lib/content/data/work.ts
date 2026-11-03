@@ -65,6 +65,3 @@ export const caseStudies: CaseStudy[] = [
     services: ["websites"],
   },
 ];
-
-/** Client names shown in the "Trusted by" row */
-export const trustedBy = ["Votely", "Tiqwa Travels", "straitPay", "OneFarm", "Nexterra", "Tyda"];

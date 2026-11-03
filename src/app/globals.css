@@ -255,3 +255,102 @@ textarea:focus-visible,
   }
   .js-reveal .rv:not(.is-in), .js-reveal .line:not(.is-in) { opacity: 1; transform: none; }
 }
+
+/* Article and policy text from the CMS (HTML: headings, paragraphs, lists,
+   links, quotes and images). Matches the article layout on the design canvas. */
+.rich-text {
+  color: #b7c2cc;
+  font-size: 18px;
+  line-height: 1.75;
+}
+.rich-text > * + * {
+  margin-top: 1.5rem;
+}
+.rich-text h2,
+.rich-text h3 {
+  color: #ffffff;
+  font-family: var(--font-archivo), var(--font-inter), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.rich-text h2 {
+  margin-top: 3.5rem;
+  font-size: clamp(28px, 3vw, 40px);
+}
+.rich-text h3 {
+  margin-top: 2.5rem;
+  font-size: clamp(22px, 2.2vw, 28px);
+}
+.rich-text > :first-child {
+  margin-top: 0;
+}
+.rich-text strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+.rich-text a {
+  color: #58d68d;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.rich-text ul,
+.rich-text ol {
+  padding-left: 1.5rem;
+}
+.rich-text ul {
+  list-style: disc;
+}
+.rich-text ol {
+  list-style: decimal;
+}
+.rich-text li::marker {
+  color: #58d68d;
+}
+.rich-text li + li {
+  margin-top: 0.75rem;
+}
+.rich-text blockquote {
+  border-left: 2px solid #58d68d;
+  padding-left: 1.5rem;
+  color: #ffffff;
+  font-size: 1.15em;
+}
+.rich-text code {
+  background: #13202b;
+  border-radius: 6px;
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+}
+.rich-text hr {
+  border: 0;
+  border-top: 1px solid #1c2733;
+  margin: 3rem 0;
+}
+.rich-text img {
+  border-radius: 20px;
+  max-width: 100%;
+  height: auto;
+  margin-top: 2.5rem;
+}
+
+/* Policy pages: each heading starts a ruled section, as on the original privacy page. */
+.rich-text.rich-text-sections {
+  font-size: 17px;
+}
+.rich-text.rich-text-sections h2 {
+  margin-top: 2.5rem;
+  border-top: 1px solid #1c2733;
+  padding-top: 2.5rem;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+.rich-text.rich-text-sections h2 + * {
+  margin-top: 1rem;
+}
+.rich-text.rich-text-sections p + p {
+  margin-top: 1rem;
+}
+.rich-text.rich-text-sections > h2:first-child {
+  margin-top: 0;
+}

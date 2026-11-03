@@ -1,4 +1,30 @@
-import type { Service } from "../types";
+import type { Faq, Step } from "../types";
+
+/** The services as first written; converted to the CMS shape in ../local.ts. */
+export type ServiceSource = {
+  slug: string;
+  number: string;
+  name: string;
+  summary: string;
+  metaTitle: string;
+  metaDescription: string;
+  /** Display headline; `accent` is appended to the last line in green */
+  headline: { lines: string[]; accent: string };
+  intro: string;
+  ctaLabel: string;
+  whatsappMessage: string;
+  flow: { title: string; steps: [string, string, string, string, string]; note: string };
+  problems: { intro: string; items: Step[] };
+  tools: { heading: string; body: string; items: string[]; extra: string };
+  process: { lead: string; accent: string; steps: Step[] };
+  relatedWork?: { slug: string; blurb: string };
+  faqHeading: string;
+  faqs: Faq[];
+  /** Closing call to action, one entry per line */
+  ctaHeading: string[];
+};
+
+type Service = ServiceSource;
 
 // Business Automation follows the approved design canvas word for word, except
 // for three FAQ answers the canvas leaves as placeholders.

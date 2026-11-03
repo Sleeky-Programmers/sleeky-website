@@ -6,7 +6,7 @@ import { ArrowUpRight } from "@/components/ui/icons";
 import { getInsights } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
-// Re-check for new articles hourly once the CMS is connected.
+// New articles show as soon as the CMS reports them (see /api/revalidate), or within an hour.
 export const revalidate = 3600;
 
 export const metadata = pageMetadata({
@@ -39,7 +39,7 @@ export default async function InsightsPage() {
               In the meantime, see what we&rsquo;ve built or tell us about your project.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/work/votely" variant="outline" size="md">See our work</ButtonLink>
+              <ButtonLink href="/work" variant="outline" size="md">See our work</ButtonLink>
               <ButtonLink href="/start-a-project" size="md" arrow>Start a project</ButtonLink>
             </div>
           </div>
@@ -68,7 +68,7 @@ export default async function InsightsPage() {
         )}
       </section>
       </main>
-      <CtaFooter heading={["Let’s talk."]} size="lg" headingLinks />
+      <CtaFooter heading="Let’s talk." size="lg" headingLinks />
     </>
   );
 }

@@ -1,43 +1,44 @@
-import type { CaseStudy, InsightPost, Service } from "./types";
-import { services } from "./data/services";
-import { caseStudies, trustedBy } from "./data/work";
-import { insights } from "./data/insights";
-import { studioPhotos, team, values } from "./data/about";
+import { cache } from "react";
+import { createCmsSource } from "./cms";
+import { localSource } from "./local";
+import type { ContentSource } from "./source";
 
-// Single entry point for site content. Every page reads content through these
-// async functions, so connecting the CMS later only means changing their bodies
-// (e.g. to Sanity GROQ queries) — no page or component needs to change.
+// Single entry point for site content. Pages and components read content only
+// through these functions.
+//
+// With CMS_API_URL set (the CMS's address, e.g. https://cms.sleekyprogrammers.com),
+// content comes from the Sleeky CMS; without it, from the local files in ./data.
 
-export type { CaseStudy, InsightPost, Service, TeamMember } from "./types";
+export type {
+  AboutContent,
+  CaseStudy,
+  CaseStudyImage,
+  HomeContent,
+  Insight,
+  InsightPost,
+  PrivacyContent,
+  Service,
+  SiteSettings,
+  TeamMember,
+} from "./types";
 
-export async function getAbout() {
-  return { values, team, studioPhotos };
-}
+const cmsUrl = process.env.CMS_API_URL?.trim();
+const source: ContentSource = cmsUrl ? createCmsSource(cmsUrl) : localSource;
 
-export async function getServices(): Promise<Service[]> {
-  return services;
-}
+/** True when content comes from the CMS. */
+export const usesCms = Boolean(cmsUrl);
 
-export async function getService(slug: string): Promise<Service | null> {
-  return services.find((service) => service.slug === slug) ?? null;
-}
+// cache(): each piece of content is read once per request, however many components use it.
+export const getSiteSettings = cache(() => source.getSiteSettings());
+export const getHome = cache(() => source.getHome());
+export const getAbout = cache(() => source.getAbout());
+export const getPrivacy = cache(() => source.getPrivacy());
+export const getServices = cache(() => source.getServices());
+export const getCaseStudies = cache(() => source.getCaseStudies());
+export const getInsights = cache(() => source.getInsights());
+export const getInsight = cache((slug: string) => source.getInsight(slug));
 
-export async function getCaseStudies(): Promise<CaseStudy[]> {
-  return caseStudies;
-}
+export const getService = cache(async (slug: string) => (await getServices()).find((service) => service.slug === slug) ?? null);
 
-export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
-  return caseStudies.find((study) => study.slug === slug) ?? null;
-}
-
-export async function getTrustedBy(): Promise<string[]> {
-  return trustedBy;
-}
-
-export async function getInsights(): Promise<InsightPost[]> {
-  return [...insights].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-}
-
-export async function getInsight(slug: string): Promise<InsightPost | null> {
-  return insights.find((post) => post.slug === slug) ?? null;
-}
+/** A published case study and the next one in order, for "Next project". */
+export const getCaseStudy = cache((slug: string) => source.getCaseStudy(slug));

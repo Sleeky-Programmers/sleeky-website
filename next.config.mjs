@@ -3,12 +3,16 @@ const nextConfig = {
   // Lets a verification build run alongside `next dev` without sharing .next
   distDir: process.env.NEXT_DIST_DIR || ".next",
 
-  // As on the design canvas, "Work" opens the case study page and "Services" opens
-  // the service page (navbar and breadcrumbs). Temporary redirects, so overview
-  // pages can take these URLs later if they are designed.
+  // Images uploaded in the Sleeky CMS are served from Cloudinary.
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com", pathname: "/**" }],
+  },
+
+  // As on the design canvas, "Services" opens the service page (navbar and
+  // breadcrumbs). A temporary redirect, so an overview page can take this URL later.
+  // ("Work" opens the first case study: app/(site)/work/page.tsx.)
   async redirects() {
     return [
-      { source: "/work", destination: "/work/votely", permanent: false },
       { source: "/services", destination: "/services/business-automation", permanent: false },
     ];
   },

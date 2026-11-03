@@ -1,3 +1,7 @@
+import type { SiteSettings } from "./content/types";
+
+// Fixed facts about the company and site. Contact details, address and social
+// links are editable (CMS: Site settings) and come from getSiteSettings().
 export const site = {
   name: "Sleeky Programmers",
   legalName: "Sleeky Programmers Ltd",
@@ -6,27 +10,6 @@ export const site = {
   description:
     "Websites, web and mobile apps, and business automation for ambitious businesses in Lagos, Nigeria and beyond.",
   foundingDate: "2023-01",
-  phone: {
-    display: "0916 095 2000",
-    e164: "+2349160952000",
-  },
-  whatsappNumber: "2349160952000",
-  email: "support@sleekyprogrammers.com",
-  // e.g. "Mon–Fri, 9am–6pm". Shown on About and added to structured data once set (brief 6.2).
-  openingHours: undefined as string | undefined,
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=20+Olanrewaju+Street%2C+Akoka%2C+Lagos",
-  address: {
-    street: "20 Olanrewaju Street",
-    locality: "Akoka",
-    region: "Lagos",
-    country: "NG",
-  },
-  socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/sleeky-programmers-limited/" },
-    { label: "Instagram", href: "https://www.instagram.com/sleekyprogrammers" },
-    { label: "X", href: "https://x.com/sleekydevs" },
-    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61565977402117" },
-  ],
   logo: {
     onDark: "/brand/logo-on-dark.svg",
     mark: "/brand/logomark.svg",
@@ -35,18 +18,22 @@ export const site = {
   },
 };
 
-// Main navigation, as on the design canvas: Work opens the case study page and
-// Services the service page. `section` keeps the item highlighted across that section.
+// Main navigation, as on the design canvas: Work opens the first case study (see
+// app/(site)/work/page.tsx) and Services the service page. `section` keeps the item
+// highlighted across that section.
 export const mainNav = [
-  { label: "Work", href: "/work/votely", section: "/work" },
+  { label: "Work", href: "/work", section: "/work" },
   { label: "Services", href: "/services/business-automation", section: "/services" },
   { label: "About", href: "/about", section: "/about" },
   { label: "Insights", href: "/insights", section: "/insights" },
 ];
 
-export const DEFAULT_WHATSAPP_MESSAGE = "Hi Sleeky Programmers, I'd like to discuss a project.";
+/** WhatsApp chat link with a pre-filled message (the site's default message unless given). */
+export const whatsappLink = (settings: Pick<SiteSettings, "whatsappNumber" | "whatsappMessage">, message?: string) =>
+  `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(message || settings.whatsappMessage)}`;
 
-export const whatsappLink = (message: string = DEFAULT_WHATSAPP_MESSAGE) =>
-  `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
+export const fullAddress = ({ address }: Pick<SiteSettings, "address">) => `${address.street}, ${address.locality}, ${address.region}`;
 
-export const absoluteUrl = (path: string = "/") => `${site.url}${path === "/" ? "" : path}`;
+/** Full address of a path on this site; addresses that are already absolute (e.g. CMS images) are returned as they are. */
+export const absoluteUrl = (path: string = "/") =>
+  /^https?:\/\//.test(path) ? path : `${site.url}${path === "/" ? "" : path}`;

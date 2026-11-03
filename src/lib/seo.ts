@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { CaseStudy, Faq, Service } from "./content/types";
+import type { CaseStudy, Faq, Service, SiteSettings } from "./content/types";
 import { absoluteUrl, site } from "./site";
 
 type PageMetaInput = {
@@ -37,13 +37,13 @@ export function pageMetadata({ title, description, path, absoluteTitle, noIndex,
 const ORG_ID = `${site.url}/#organization`;
 const BUSINESS_ID = `${site.url}/#localbusiness`;
 
-export function organizationJsonLd() {
+export function organizationJsonLd(settings: SiteSettings) {
   const postalAddress = {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
-    addressLocality: site.address.locality,
-    addressRegion: site.address.region,
-    addressCountry: site.address.country,
+    streetAddress: settings.address.street,
+    addressLocality: settings.address.locality,
+    addressRegion: settings.address.region,
+    addressCountry: settings.address.country,
   };
 
   return [
@@ -55,11 +55,11 @@ export function organizationJsonLd() {
       alternateName: site.name,
       url: site.url,
       logo: absoluteUrl(site.logo.mark),
-      email: site.email,
-      telephone: site.phone.e164,
+      email: settings.email,
+      telephone: settings.phone.e164,
       foundingDate: site.foundingDate,
       address: postalAddress,
-      sameAs: site.socials.map((social) => social.href),
+      sameAs: settings.socials.map((social) => social.href),
     },
     {
       "@context": "https://schema.org",
@@ -69,12 +69,14 @@ export function organizationJsonLd() {
       url: site.url,
       image: absoluteUrl("/opengraph-image"),
       logo: absoluteUrl(site.logo.mark),
-      telephone: site.phone.e164,
-      email: site.email,
+      telephone: settings.phone.e164,
+      email: settings.email,
       address: postalAddress,
       areaServed: ["Lagos", "Nigeria"],
       parentOrganization: { "@id": ORG_ID },
-      // TODO: add `openingHoursSpecification` once Sleeky confirms opening hours (brief 6.2).
+      ...(settings.mapsUrl ? { hasMap: settings.mapsUrl } : {}),
+      // TODO: add `openingHoursSpecification` once Sleeky confirms opening hours (brief 6.2);
+      // the CMS stores them as free text, so they'd need a structured field first.
     },
   ];
 }
@@ -98,7 +100,7 @@ export function serviceJsonLd(service: Service) {
     "@type": "Service",
     name: service.name,
     serviceType: service.name,
-    description: service.metaDescription,
+    description: service.seo.description,
     url: absoluteUrl(`/services/${service.slug}`),
     provider: { "@id": BUSINESS_ID },
     areaServed: ["Lagos", "Nigeria"],

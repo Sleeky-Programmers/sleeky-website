@@ -7,6 +7,7 @@ import ClickTracker from "@/components/providers/ClickTracker";
 import RevealObserver from "@/components/providers/RevealObserver";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import JsonLd from "@/components/ui/JsonLd";
+import { getSiteSettings } from "@/lib/content";
 import { organizationJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -51,15 +52,16 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await getSiteSettings();
   return (
     <html lang="en-NG">
       <body className={`${archivo.variable} ${inter.variable} bg-ink font-sans text-white antialiased`}>
-        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={organizationJsonLd(settings)} />
         {children}
         <WhatsAppButton />
         <SmoothScroll />

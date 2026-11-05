@@ -8,7 +8,7 @@ const Hero = async ({ content }: { content: HomeContent["hero"] }) => {
     const settings = await getSiteSettings();
 
     return (
-        <section className="relative -mt-[104px] flex min-h-[880px] flex-col pt-[104px]">
+        <section data-track-location="hero" className="relative -mt-[104px] flex min-h-[880px] flex-col pt-[104px]">
             <div aria-hidden="true" className="glow pointer-events-none absolute left-1/2 top-[18%] h-[620px] w-[620px] rounded-full bg-green opacity-[0.22]" />
             <div aria-hidden="true" className="floor-wrap pointer-events-none absolute -left-[20%] -right-[20%] top-[62%] h-[520px]">
                 <div className="floor" />

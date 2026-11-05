@@ -7,7 +7,11 @@ export type AnalyticsEvent =
   | "phone_click"
   | "email_click"
   | "form_step"
-  | "file_upload";
+  | "file_upload"
+  /** Any button or link click: label, location (page section), link_type, link_url */
+  | "button_click"
+  /** How far down a page the visitor scrolled: percent = 25, 50, 75 or 90 */
+  | "scroll_depth";
 
 declare global {
   interface Window {

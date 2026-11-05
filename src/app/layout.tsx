@@ -5,6 +5,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Analytics from "@/components/providers/Analytics";
 import ClickTracker from "@/components/providers/ClickTracker";
 import RevealObserver from "@/components/providers/RevealObserver";
+import ScrollTracker from "@/components/providers/ScrollTracker";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import JsonLd from "@/components/ui/JsonLd";
 import { getSiteSettings } from "@/lib/content";
@@ -67,6 +68,7 @@ export default async function RootLayout({
         <SmoothScroll />
         <RevealObserver />
         <ClickTracker />
+        <ScrollTracker />
         <Analytics />
       </body>
     </html>

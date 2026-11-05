@@ -1,5 +1,6 @@
 import StartProjectForm from "@/components/forms/StartProjectForm";
 import JsonLd from "@/components/ui/JsonLd";
+import { getSiteSettings } from "@/lib/content";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -9,11 +10,12 @@ export const metadata = pageMetadata({
   path: "/start-a-project",
 });
 
-export default function StartAProjectPage() {
+export default async function StartAProjectPage() {
+  const settings = await getSiteSettings();
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Start a project", path: "/start-a-project" }])} />
-      <StartProjectForm />
+      <StartProjectForm whatsappNumber={settings.whatsappNumber} />
     </>
   );
 }

@@ -7,6 +7,7 @@ import { config } from "@/config";
 import { track } from "@/lib/analytics";
 import { Check, Paperclip } from "@/components/ui/icons";
 import Recaptcha, { RecaptchaHandle } from "./Recaptcha";
+import { briefWhatsAppMessage, INVALID_PHONE_MESSAGE, normalisePhone } from "./briefMessage";
 import {
     ACCEPTED_EXTENSIONS,
     ACCEPTED_FILE_TYPES,
@@ -14,7 +15,6 @@ import {
     Channel,
     EMAIL_PATTERN,
     MAX_FILE_BYTES,
-    PHONE_PATTERN,
     channelOptions,
     existingOptions,
     serviceOptions,
@@ -36,7 +36,12 @@ const headingClass = "m-0 font-display text-[clamp(38px,5vw,60px)] font-extrabol
 const ErrorText = ({ id, message }: { id: string; message?: string }) =>
     message ? <p id={id} role="alert" className="m-0 mt-2 text-sm font-medium text-[#FF8A8A]">{message}</p> : null;
 
-const StartProjectForm = () => {
+type StartProjectFormProps = {
+    /** Sleeky's WhatsApp number (digits, e.g. 2349160952000), from Site settings */
+    whatsappNumber: string;
+};
+
+const StartProjectForm = ({ whatsappNumber }: StartProjectFormProps) => {
     const router = useRouter();
     const sectionRef = useRef<HTMLElement>(null);
     const headingRef = useRef<HTMLHeadingElement>(null);
@@ -74,7 +79,7 @@ const StartProjectForm = () => {
             if (!name.trim()) errors.name = "Add your full name.";
             if (!trimmedEmail && !trimmedPhone) errors.contact = "Add an email address or WhatsApp number so we can reply.";
             if (trimmedEmail && !EMAIL_PATTERN.test(trimmedEmail)) errors.email = "Enter a valid email address.";
-            if (trimmedPhone && !PHONE_PATTERN.test(trimmedPhone)) errors.phone = "Enter a valid phone number.";
+            if (trimmedPhone && !normalisePhone(trimmedPhone)) errors.phone = INVALID_PHONE_MESSAGE;
             if (!errors.contact && channel === "email" && !trimmedEmail) errors.email = "Add your email, since you'd like us to reply by email.";
             if (!errors.contact && channel !== "email" && !trimmedPhone) {
                 errors.phone = `Add your WhatsApp number, since you'd like us to reply by ${channel === "phone" ? "phone" : "WhatsApp"}.`;
@@ -170,10 +175,31 @@ const StartProjectForm = () => {
             }
 
             track("generate_lead", { services: services.join(","), timeline: timeline ?? "", channel });
+
+            // WhatsApp briefs: the lead is saved, and the thank-you page offers a
+            // chat with us with the brief already typed in (the client presses send).
+            const whatsappHref =
+                channel === "whatsapp"
+                    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                          briefWhatsAppMessage({
+                              name,
+                              company,
+                              email,
+                              phone,
+                              channel,
+                              services,
+                              timeline,
+                              existing,
+                              goal,
+                              fileUrl: typeof data.fileUrl === "string" ? data.fileUrl : undefined,
+                              fileName: file?.name,
+                          }),
+                      )}`
+                    : undefined;
             try {
                 window.sessionStorage.setItem(
                     BRIEF_STORAGE_KEY,
-                    JSON.stringify({ firstName: name.trim().split(/\s+/)[0], channel, hasEmail: !!email.trim() }),
+                    JSON.stringify({ firstName: name.trim().split(/\s+/)[0], channel, hasEmail: !!email.trim(), whatsappHref }),
                 );
             } catch {
                 // The thank-you page falls back to generic copy.
@@ -376,7 +402,7 @@ const StartProjectForm = () => {
                                     onBlur={() => setTouched((current) => ({ ...current, phone: true }))}
                                     aria-invalid={!!show("phone")}
                                     aria-describedby={show("phone") ? "phone-error" : undefined}
-                                    placeholder="0801 234 5678"
+                                    placeholder="0803 123 4567"
                                     className={`${fieldClass} mt-2.5`}
                                 />
                                 <ErrorText id="phone-error" message={show("phone")} />

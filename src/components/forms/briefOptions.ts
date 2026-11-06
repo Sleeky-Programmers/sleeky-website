@@ -38,6 +38,5 @@ export const ACCEPTED_FILE_TYPES = ".pdf,.doc,.docx,.png,.jpg,.jpeg";
 export const ACCEPTED_EXTENSIONS = ["pdf", "doc", "docx", "png", "jpg", "jpeg"];
 
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-export const PHONE_PATTERN = /^\+?[0-9\s\-()]{7,20}$/;
 
 export const BRIEF_STORAGE_KEY = "sleeky-brief-sent";
